@@ -1,6 +1,6 @@
 # Function to print a BFS of graph 
     def BFS(self, s): 
-  
+        # time complexity : O(V + E)
         # Mark all the vertices as not visited 
         visited = [False] * (len(self.graph)) 
   
