@@ -12,7 +12,7 @@ def shortestDistanceToPostOffice(grid):
     rest other cells are normal houses (fiout out as X)
     try to find shortest distance from each house to closest office.
     
-	time complexity: O(P * V * E) , P is office count, V is cell in grid, E is connect between each cell
+	time complexity: O(P * (V + E)) , P is office count, V is cell in grid, E is connect between each cell
 	space complexity: O(V)
 
 	"""
