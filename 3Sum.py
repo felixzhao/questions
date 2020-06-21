@@ -35,7 +35,7 @@ class Solution:
                         l += 1
                     while l<r and nums[r] == nums[r - 1]: # 
                         r -= 1
-                l += 1
-                r -= 1
+                    l += 1 # move if equal, other condition already moved
+                    r -= 1 # move if equal, other condition already moved
         return res
         
