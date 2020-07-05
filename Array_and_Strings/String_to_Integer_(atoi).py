@@ -1,12 +1,14 @@
 import math
 INT_MAX = 2147483647
 INT_MIN = -2147483648
+
+
 class Solution:
     def myAtoi(self, s: str) -> int:
-    """
-    check i out of len(s) is needed in each loop
-    key method: total = total * 10 + digital
-    """
+        """
+        check i out of len(s) is needed in each loop
+        key method: total = total * 10 + digital
+        """
         if len(s) == 0:
             return 0
         i = 0
