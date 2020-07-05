@@ -2,8 +2,28 @@ print('Binary Search')
 
 
 def binary_search(arr, l, r, t):
+    """
+    basic algorithms
+
+    key point:
+        - because of l may larger than 0, so we must plus the l again
+        - mid = (r-l) //2 + l
+        - e.g.
+            - if len(arr) == 6
+                - l = 1, r = 6-1 = 5
+                - mid = (5 - 1) // 2 + 1 = 2 + 1 = 3
+
+                - l = 2, r = 6-1 = 5
+                - mid = (5 - 2) // 2 + 2 = 1 + 2 = 3
+
+    :param arr: the array we finding
+    :param l: start position in array of this search
+    :param r: end position in array of this search
+    :param t: what we try to find, the target value
+    :return: the position of target value, if not found return -1
+    """
     if l <= r:
-        mid = (r-l)// 2 + l
+        mid = (r-l) // 2 + l
         if arr[mid] == t:
             return mid
         elif arr[mid] < t:
