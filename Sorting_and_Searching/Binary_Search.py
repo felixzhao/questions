@@ -1,7 +1,7 @@
 print('Binary Search')
 
 
-def binary_search(arr, l, r, t):
+def binary_search_recursive(arr, l, r, t):
     """
     basic algorithms
 
@@ -28,18 +28,36 @@ def binary_search(arr, l, r, t):
             return mid
         elif arr[mid] < t:
             # search right side
-            return binary_search(arr, mid+1, r, t)
+            return binary_search_recursive(arr, mid+1, r, t)
         else:
-            return binary_search(arr, l, mid-1, t)
+            return binary_search_recursive(arr, l, mid-1, t)
+    return -1
+
+
+def binary_search_iterative(arr, t):
+    l, r = 0, len(arr) - 1
+    while l <= r:
+        mid = (r - l) //2 + l
+        if arr[mid] == t:
+            return mid
+        elif arr[mid] > t:
+            # search left branch
+            r = mid - 1
+        else:
+            # search right branch
+            l = mid + 1
     return -1
 
 
 def test(tests):
     all_passed = True
     for arr, t, exp in tests:
-        # Function call
-        result = binary_search(arr, 0, len(arr) - 1, t)
-        print('passed.') if result == exp else print(f'failed. arr: {arr}, target: {t}, expected: {exp}')
+        # call recursive
+        result = binary_search_recursive(arr, 0, len(arr) - 1, t)
+        print('recursive passed.') if result == exp else print(f'failed. arr: {arr}, target: {t}, expected: {exp}')
+        # call iterative
+        result = binary_search_iterative(arr, t)
+        print('iterative passed.') if result == exp else print(f'failed. arr: {arr}, target: {t}, expected: {exp}')
     if all_passed:
         print('all passed.')
 
