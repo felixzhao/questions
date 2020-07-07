@@ -1,5 +1,5 @@
 class Solution:
-    def findPeakElement(self, nums: List[int]) -> int:
+    def findPeakElementSorting(self, nums: List[int]) -> int:
         """
         My Answer
 
@@ -19,4 +19,27 @@ class Solution:
             arr.append((nums[i], i))
         arr.sort(key=lambda x: x[0])
         return arr[-1][1]
+
+    def findPeakElementLinearScan(self, nums: List[int]) -> int:
+        """
+        Good Question
+
+        Linear Scan
+
+        logic:
+            - following the question, any peak can be the answer
+            - case 1: if each nums[i] > nums[i+1] then peak is the nums[0]
+            - case 2: if each nums[i] < nums[i+1] then peak is the nums[-1]
+            - case 3: if nums[i-1] < nums[i] > nums[i+1] then peak is the nums[i]
+            - Thus, return the first element lager than the next
+            - or if case 2 return last element
+
+        time  O(N)
+        space O(1)
+
+        """
+        for i in range(len(nums) - 1):
+            if nums[i] > nums[i + 1]:
+                return i
+        return len(nums) - 1
 
