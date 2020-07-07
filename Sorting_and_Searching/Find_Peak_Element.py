@@ -27,7 +27,7 @@ class Solution:
         Linear Scan
 
         logic:
-            - following the question, any peak can be the answer
+            - following the question, we can return any peak as result
             - case 1: if each nums[i] > nums[i+1] then peak is the nums[0]
             - case 2: if each nums[i] < nums[i+1] then peak is the nums[-1]
             - case 3: if nums[i-1] < nums[i] > nums[i+1] then peak is the nums[i]
@@ -42,4 +42,31 @@ class Solution:
             if nums[i] > nums[i + 1]:
                 return i
         return len(nums) - 1
+
+    def findPeakElementRecursiveBinarySearch(self, nums: List[int]) -> int:
+        return self.searchRecursiveBinarySearch(nums, 0, len(nums) - 1)
+
+    def searchRecursiveBinarySearch(self, nums: List[int], l: int, r: int) -> int:
+        """
+        Good Question
+
+        Recursive Binary Search
+
+        logic:
+            - start from mid
+            - if mid > next
+            - then search in left part
+            - otherwise search in right part
+
+        Key Points:
+            - search left part, must l=l, r=mid (not mid+1)
+            - because of we only compare mid and next of mid
+
+        """
+        if l == r:
+            return l
+        mid = (l + r) // 2
+        if nums[mid] > nums[mid + 1]:
+            return self.searchRecursiveBinarySearch(nums, l, mid)
+        return self.searchRecursiveBinarySearch(nums, mid + 1, r)
 
