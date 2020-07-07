@@ -62,6 +62,9 @@ class Solution:
             - search left part, must l=l, r=mid (not mid+1)
             - because of we only compare mid and next of mid
 
+        time  O(logN)
+        space O(logN)
+
         """
         if l == r:
             return l
@@ -70,3 +73,29 @@ class Solution:
             return self.searchRecursiveBinarySearch(nums, l, mid)
         return self.searchRecursiveBinarySearch(nums, mid + 1, r)
 
+    def findPeakElementIterativeBinarySearch(self, nums: List[int]) -> int:
+        """
+
+        Good Question
+
+        Iterative Binary Search
+
+        logic:
+            - as same as Recursive Binary Search
+
+        Key Points: (same to Recursive)
+            - search left part, must l=l, r=mid (not mid+1)
+            - because of we only compare mid and next of mid
+
+        time  O(logN)
+        space O(logN)
+
+        """
+        l, r = 0, len(nums) - 1
+        while l < r:
+            mid = (l + r) // 2
+            if nums[mid] > nums[mid + 1]:
+                r = mid
+            else:
+                l = mid + 1
+        return l
