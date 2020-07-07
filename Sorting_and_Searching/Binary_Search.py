@@ -1,5 +1,12 @@
 print('Binary Search')
 
+"""
+overflow bug
+https://en.wikipedia.org/wiki/Binary_search_algorithm#Implementation_issues
+
+may not happen in python, but need to known this.
+"""
+
 
 def binary_search_recursive(arr, l, r, t):
     """
@@ -23,7 +30,8 @@ def binary_search_recursive(arr, l, r, t):
     :return: the position of target value, if not found return -1
     """
     if l <= r:
-        mid = (l+r) // 2
+        #mid = (l+r) // 2
+        mid = (r - l) // 2 + l
         if arr[mid] == t:
             return mid
         elif arr[mid] < t:
@@ -37,7 +45,8 @@ def binary_search_recursive(arr, l, r, t):
 def binary_search_iterative(arr, t):
     l, r = 0, len(arr) - 1
     while l <= r:
-        mid = (l+r) // 2
+        # mid = (l+r) // 2
+        mid = (r - l) // 2 + l
         if arr[mid] == t:
             return mid
         elif arr[mid] > t:
