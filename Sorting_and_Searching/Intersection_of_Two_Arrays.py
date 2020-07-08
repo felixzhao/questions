@@ -35,6 +35,9 @@ class Solution:
 
         Strange thing
             - use shorter length set at first take less time cost in list comprehension
+
+        Time  O(M + N)
+        Space O(M + N)
         """
         set1 = set(nums1)
         set2 = set(nums2)
