@@ -10,7 +10,7 @@ class Solution:
             - call python function to do the intersection
 
         time  O(S + T + S + T) = O(N), S len(num1),T len(num2), set() O(1), .interestion O(S + T)
-        space O(1 + S*T) = O(N^2), set() O(1) + .intersection worse case O(S*T)
+        space O(1 + S*T) = O(S*T), set() O(1) + .intersection worse case O(S*T), average case O(S + T)
 
         reference:
             - python operation complexity
