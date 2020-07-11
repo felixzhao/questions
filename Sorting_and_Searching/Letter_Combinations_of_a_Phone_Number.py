@@ -13,6 +13,8 @@ class Solution:
     def getLetterCombinations(self, combinations: List[str], next_digits: str) -> List[str]:
         """
         Recursion
+        https://en.wikipedia.org/wiki/Backtracking
+        https://en.wikipedia.org/wiki/Lexicographical_order
 
         logic:
             - each digit as a level in the recursion
