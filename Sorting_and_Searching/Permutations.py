@@ -18,6 +18,10 @@ class Solution:
         time  O(10^N)
         space O(M^N)
 
+        python:
+            - deep copy array
+                new_arr = arr[:]
+
         """
         if len(next_nums) == 0:
             self.result.append(cur_permute)
