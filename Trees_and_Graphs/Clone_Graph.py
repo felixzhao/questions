@@ -36,3 +36,44 @@ class Solution:
         if node.neighbors:
             cloneNode.neighbors = [self.cloneGraphDFS(n) for n in node.neighbors]
         return cloneNode
+
+
+    def cloneGraphBFS(self, node: 'Node') -> 'Node':
+        """
+        BFS
+        (queue + visited dictionary)
+
+        logic
+            - basic idea
+                - visited dictory, keep processd node and clone node pair
+                - queue (FIFO), keep neighbors
+                - visited list as the result
+            - process
+                - init queue with root
+                - until queue empty do
+                - pop node, process all neighbors
+
+        key points:
+            - clone node with empty list as the init neighbors
+            - clone when node not in visited
+            - exponse neighbers in loop
+
+        time  O(N)
+        space O(N)
+        """
+        if not node:
+            return node
+        visited = {}
+        queue = []
+        queue.append(node)
+        visited[node] = Node(node.val, [])
+        while queue:
+            cur = queue.pop(0)
+            for n in cur.neighbors:
+                if n not in visited:
+                    visited[n] = Node(n.val, [])
+                    queue.append(n)
+                visited[cur].neighbors.append(visited[n])
+        return visited[node]
+
+
