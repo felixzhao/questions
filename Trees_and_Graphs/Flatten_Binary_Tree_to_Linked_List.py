@@ -5,7 +5,10 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def flatten(self, root: TreeNode) -> None:
+    """
+    Good Question
+    """
+    def flattenRecursive(self, root: TreeNode) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
@@ -29,8 +32,8 @@ class Solution:
         """
         if not root:
             return None
-        l = self.flatten(root.left)
-        r = self.flatten(root.right)
+        l = self.Recursiveflatten(root.left)
+        r = self.Recursiveflatten(root.right)
         root.left = None
         p = root
         if l:
@@ -42,3 +45,44 @@ class Solution:
             p.right = r
         return root
 
+    def flattenMorrisTravelsal(self, root: TreeNode) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        """
+        Good Solution
+
+        Morris Travelsal (Inorder Travelsal)
+            - useful
+            - hard to understand
+
+        logic:
+            - find the right most of left branch
+            - put original right branch folowing the left- right most node
+            - move current left to right
+            - until right is None
+
+        Key Points:
+            - after put original right branch to left-rightmost node
+                - must move current left node to right
+                    - node.right = node.left
+                - must clean up left node
+                    - node.left = None
+
+
+        time  O(N)
+        space O(1) ??? why it's O(1), I think it less than recursive solution, but still O(N), not quite sure.
+
+        """
+        if not root:
+            return None
+        node = root
+        while node:
+            if node.left:
+                rightmost = node.left
+                while rightmost.right:
+                    rightmost = rightmost.right
+                rightmost.right = node.right
+                node.right = node.left
+                node.left = None
+            node = node.right
