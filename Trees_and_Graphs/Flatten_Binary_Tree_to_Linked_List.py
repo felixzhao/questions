@@ -23,6 +23,9 @@ class Solution:
         Key Points
             - original left branch Must set to None
 
+        time  O(N), as we process each of the node
+        space O(N), the worse case all node in left branch, so the size of recursive stack is N.
+
         """
         if not root:
             return None
