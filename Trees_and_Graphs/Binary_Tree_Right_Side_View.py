@@ -42,3 +42,39 @@ class Solution:
             # print(f'node {node}')
             res.append(node.val)
         return res
+
+    def rightSideView(self, root: TreeNode) -> List[int]:
+        """
+        DIRECTLY COPY ANSWER
+        (because of it trick)
+
+        DFS
+        Recursive
+
+        Trick Approach
+
+        logic:
+            - recursive
+            - only level == len(res), then put to res
+            - loop child right first
+
+        time  O(N)
+        space O(N), N=H is the hight of tree
+
+        """
+        if root is None:
+            return []
+
+        rightside = []
+
+        def helper(node: TreeNode, level: int) -> None:
+            print(f'rightside {rightside}')
+            print(f'level {level}, len {len(rightside)}, node {node}')
+            if level == len(rightside):
+                rightside.append(node.val)
+            for child in [node.right, node.left]:  # key point, put right at first
+                if child:
+                    helper(child, level + 1)
+
+        helper(root, 0)
+        return rightside
