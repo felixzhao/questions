@@ -41,7 +41,40 @@ class Solution:
                     nex_q.append(node.right)
             # print(f'node {node}')
             res.append(node.val)
-        return res
+        return
+
+        def rightSideView(self, root: TreeNode) -> List[int]:
+            """
+            Good Approach
+
+            Queue
+            (one queue + level length measurements)
+
+            logic
+                - init queue with root
+                - in loop
+                    - get length of queue length
+                    - pop node in queue with the length
+                    - only add length - 1 node into res
+
+            time  O(N)
+            space O(N), D is max width of tree, worse case N/2 (complete tree)
+            """
+            if not root:
+                return []
+            res = []
+            queue = [root]
+            while queue:
+                length = len(queue)
+                for i in range(length):
+                    node = queue.pop(0)
+                    if i == length - 1:
+                        res.append(node.val)
+                    if node.left:
+                        queue.append(node.left)
+                    if node.right:
+                        queue.append(node.right)
+            return res
 
     def rightSideView(self, root: TreeNode) -> List[int]:
         """
