@@ -19,7 +19,7 @@ class Solution:
         target = 0
         for i in range(len(nums) - 2):
             print('i ' + str(i))
-            if i > 0 and  nums[i] == nums[i-1]:
+            if i > 0 and nums[i] == nums[i-1]:
                 continue
             l, r = i+1, len(nums) - 1
             while l < r:
@@ -31,11 +31,10 @@ class Solution:
                     r -= 1
                 else:
                     res.append((nums[i], nums[l], nums[r]))
-                    while l<r and  nums[l] == nums[l + 1]:
+                    while l < r and nums[l] == nums[l + 1]:
                         l += 1
-                    while l<r and nums[r] == nums[r - 1]: # 
+                    while l < r and nums[r] == nums[r - 1]:
                         r -= 1
                     l += 1 # move if equal, other condition already moved
                     r -= 1 # move if equal, other condition already moved
         return res
-        
