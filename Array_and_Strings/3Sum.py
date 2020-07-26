@@ -1,6 +1,8 @@
 class Solution:    
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         """
+        Move Slide Window
+
         - sort nums at first
         - go through item in nums, without last two (because, three sum)
         - after first item skip duplicates
